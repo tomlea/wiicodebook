@@ -6,7 +6,7 @@
     clear: both;
     margin-top: 1em;
   }
-  
+
   h1.game_name {
     margin-top: 3em;
   }
@@ -17,17 +17,17 @@
 <% else %>
   <% last_game = nil %>
   <% @friend_codes_not_added.sort_by(&:game_id).each do |friend_code| %>
-    <% 
-    if last_game != friend_code.game_id 
-      last_game = friend_code.game_id 
+    <%
+      if last_game != friend_code.game_id
+        last_game = friend_code.game_id
     %>
-      <h1 class="game_name"><%=h friend_code.game.name %></h1>
-    <% 
-    end 
+        <h1 class="game_name"><%=h friend_code.game.name %></h1>
+    <%
+      end
     %>
     <fb:user uid="<%=h friend_code.user_id %>">
     <div class="friend_code_container">
-      <fb:profile-pic uid="<%=h friend_code.user_id %>" size="square" linked="true" style="float: left; clear: both;" /> 
+      <fb:profile-pic uid="<%=h friend_code.user_id %>" size="square" linked="true" style="float: left; clear: both;" />
       <div class="friend_code"><%= h friend_code.friend_code %></div>
       <div class="options">
         <%= link_to "Mark as Entered", :action => :mark_as_entered, :friend_code_id => friend_code.id %>
@@ -36,3 +36,4 @@
     </fb:user>
   <% end %>
 <% end %>
+

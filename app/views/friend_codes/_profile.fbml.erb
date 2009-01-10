@@ -1,13 +1,7 @@
-<% if user.friend_code.nil? and game_codes.empty? %>
+<% if game_codes.empty? %>
   <h2>No friend codes defined</h2>
 <% else %>
   <table>
-    <% unless user.friend_code.nil? %>
-      <tr>
-        <th style="font-size: 0.7em; padding-right: 0.5em; text-align: right;">Wii Code</th>
-        <td><%=h user.friend_code %></td>
-      </tr>
-    <% end %>
     <% game_codes.each do |friend_code| %>
       <tr>
         <th style="font-size: 0.7em; padding-right: 0.5em; text-align: right;"><%=h friend_code.game.name %></th>

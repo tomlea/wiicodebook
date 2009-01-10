@@ -8,12 +8,13 @@ class FacebookerPublisher < Facebooker::Rails::Publisher
       fbml = render(:partial =>"/friend_codes/profile.fbml.erb", :locals => {:user => @user, :game_codes => @game_codes})
       profile(fbml)
   end
-  
+
   def mini_feed_game_codes_updated(user)
     send_as :templatized_action
     self.from( user)
     title_template "{actor} <fb:if-multiple-actors>have<fb:else>has</fb:else></fb:if-multiple-actors> <a href=\"#{root_url}\">updated Wii friend codes</a>."
     RAILS_DEFAULT_LOGGER.debug("Sending mini feed story for user #{user.id}")
   end
-  
+
 end
+

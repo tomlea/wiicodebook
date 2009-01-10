@@ -1,0 +1,21 @@
+<form action="<%= url_for(:action => :update) %>">
+  <% @games.each do |game| %>
+    <label for="<%= game %>"><%=h game.name %></label>:<input id="<%= game %>"
+            name="game_code[<%=h game.id %>]"
+            value="<%=h @game_codes_by_game_id[game.id].friend_code unless @game_codes_by_game_id[game.id].nil?  %>" />
+
+  <% if @game_codes_by_game_id and @game_codes_by_game_id.has_key? game.id and not @game_codes_by_game_id[game.id].errors.empty? %>
+    <ul class="errors">
+    <% @game_codes_by_game_id[game.id].errors.each_full do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  <% end %>
+
+    <br/>
+  <% end %>
+  <input type="submit"/>
+</fb:editor>
+
+
+

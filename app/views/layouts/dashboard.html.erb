@@ -1,0 +1,21 @@
+<div>
+  <a href="<%= url_for(:controller => :friend_codes ) %>">Show My Codes</a>
+  <a href="<%= url_for(:controller => :friend_codes, :action => :list_not_added) %>">Un-Entered Friend Codes</a>
+  <a href="<%= url_for(:controller => :friend_codes, :action => :edit) %>">Update My Codes</a>
+  <a href="<%= url_for(:controller => :friend_codes, :action => :invite_friends) %>">Invite a Friend</a>
+</div>
+
+<div>
+  UserId: <%= session[:user_id].inspect %><br/>
+  Friends: <%= session[:friends].inspect %><br/>
+<div style="margin: 0 2em 2em 2em;">
+  <% if flash[:notice] %>
+    <div style="color: #0a0;"><%= h flash[:notice] %></div>
+  <% end %>
+
+  <% if flash[:error] %>
+    <div style="color: #a00;"><%= h flash[:error] %></div>
+  <% end %>
+
+  <%= yield %>
+</div>

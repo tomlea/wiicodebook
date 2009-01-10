@@ -3,6 +3,6 @@
   <%= fb_req_choice("Add Wii Friend Codes", root_url()) %>
 <% end %>
 <% fb_request_form("Wii Friend Codes","invite_user", url_for(:controller => :friend_codes, :action => :edit)) do %>
-  <%= fb_multi_friend_selector("Invite your friends to check out Facebooker Tutorial.")   %>
-<% end %>             
+        <%= fb_multi_friend_selector("Invite your friends to check out Facebooker Tutorial.")   %>
+<% end %>
 

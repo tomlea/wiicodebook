@@ -1,4 +1,4 @@
-# This file is auto-generated from the current state of the database. Instead of editing this file, 
+# This file is auto-generated from the current state of the database. Instead of editing this file,
 # please use the migrations feature of Active Record to incrementally modify your database, and
 # then regenerate this schema definition.
 #
@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 5) do
+ActiveRecord::Schema.define(:version => 6) do
 
   create_table "friend_code_addeds", :force => true do |t|
     t.integer "user_id"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(:version => 5) do
   create_table "games", :force => true do |t|
     t.string "name"
     t.string "logo_url"
+    t.string "type"
   end
 
   create_table "sessions", :force => true do |t|
@@ -48,3 +49,4 @@ ActiveRecord::Schema.define(:version => 5) do
   end
 
 end
+

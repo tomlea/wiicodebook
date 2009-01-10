@@ -5,21 +5,15 @@
 <% ([@user] + @friends).each do |friend| %>
   <% game_codes = friend.friend_codes %>
   <fb:user uid="<%=h friend.id %>">
-    <div style="margin: 2em 0;">
-      <fb:profile-pic uid="<%=h friend.id %>" size="square" linked="true" style="float: left; clear: both;" /> 
+    <div style="margin: 2em 0; clear:both;">
+      <fb:profile-pic uid="<%=h friend.id %>" size="square" linked="true" style="float: left; clear: both;" />
       <div style="margin-left: 60px;">
         <h2><fb:name uid="<%=h friend.id %>" capitalize="true" possessive="true" /> Codes</h2>
 
-        <% if friend.friend_code.nil? and game_codes.empty? %>
+        <% if game_codes.empty? %>
           <h2>No friend codes defined</h2>
         <% else %>
           <table>
-            <% unless friend.friend_code.nil? %>
-              <tr>
-                <th style="width: 100px; padding-right: 2em; text-align: right;">Wii Code</th>
-                <td><%=h friend.friend_code %></td>
-              </tr>
-            <% end %>
             <% game_codes.each do |friend_code| %>
               <tr>
                 <th style="width: 100px; padding-right: 2em; text-align: right;"><%=h friend_code.game.name %></th>
@@ -31,9 +25,9 @@
             <% end %>
           </table>
         <% end %>
-        
+
       </div>
-      <div style="clear:both;">&nbsp;</div>
     </div>
   </fb:user>
 <% end %>
+
