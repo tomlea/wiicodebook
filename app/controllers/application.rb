@@ -1,6 +1,10 @@
 class ApplicationController < ActionController::Base
   helper :all
-  ensure_application_is_installed_by_facebook_user
+  if respond_to? :ensure_application_is_installed_by_facebook_user
+    ensure_application_is_installed_by_facebook_user
+  elsif Rails.env != "development"
+    raise "You should have facebooker installed!"
+  end
 
   layout false
 
