@@ -1,1 +1,18 @@
 # This file is held on the deploy server, as the repo is public.
+
+development:
+  api_key:
+  secret_key:
+  canvas_page_name:
+  callback_url:
+    
+test:
+  api_key: 
+  secret_key: 
+  canvas_page_name: 
+  callback_url:
+  tunnel:
+    public_host_username: 
+    public_host: 
+    public_port: 4007
+    local_port: 3000
