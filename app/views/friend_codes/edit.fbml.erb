@@ -1,0 +1,17 @@
+<fb:editor action="<%= url_for(:action => :update) %>"  labelwidth="100">
+  <fb:editor-text label="Wii" name="friend_code" value="<%=h @user.friend_code %>"/>
+    
+  <% @games.each do |game| %>
+    <fb:editor-text label="<%=h game.name %>" 
+            name="game_code[<%=h game.id %>]"
+            value="<%=h @game_codes_by_game_id[game.id].friend_code unless @game_codes_by_game_id[game.id].nil?  %>" />
+  <% end %>
+  
+  <fb:editor-buttonset>
+    <fb:editor-button value="Save" />
+    <fb:editor-cancel href="<%= url_for(:action => :index) %>" />
+  </fb:editor-buttonset> 
+</fb:editor>
+
+
+

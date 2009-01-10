@@ -1,0 +1,21 @@
+<p>You are <em><%=h @current_facebook_user.name %></em></p>
+
+<h2>Friends User Objects</h2>
+<ul>
+  <% @friends.each do |f| %>
+  <li><%=h f.id %></li>
+  <% end %>
+</ul>
+
+<h2>My User Object</h2>
+<pre>
+  <%= @user.to_yaml if @user %>
+</pre>
+
+<hr/>
+
+<h2>Facebook User Object</h2>
+<pre>
+  <%= @current_facebook_user.to_yaml %>
+</pre>
+

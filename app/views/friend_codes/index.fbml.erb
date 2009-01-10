@@ -1,0 +1,39 @@
+<style>
+  .not_added a {font-weight: bold; color: #060;}
+  .added {color: #444;}
+</style>
+<% ([@user] + @friends).each do |friend| %>
+  <% game_codes = friend.friend_codes %>
+  <fb:user uid="<%=h friend.id %>">
+    <div style="margin: 2em 0;">
+      <fb:profile-pic uid="<%=h friend.id %>" size="square" linked="true" style="float: left; clear: both;" /> 
+      <div style="margin-left: 60px;">
+        <h2><fb:name uid="<%=h friend.id %>" capitalize="true" possessive="true" /> Codes</h2>
+
+        <% if friend.friend_code.nil? and game_codes.empty? %>
+          <h2>No friend codes defined</h2>
+        <% else %>
+          <table>
+            <% unless friend.friend_code.nil? %>
+              <tr>
+                <th style="width: 100px; padding-right: 2em; text-align: right;">Wii Code</th>
+                <td><%=h friend.friend_code %></td>
+              </tr>
+            <% end %>
+            <% game_codes.each do |friend_code| %>
+              <tr>
+                <th style="width: 100px; padding-right: 2em; text-align: right;"><%=h friend_code.game.name %></th>
+                <td class="friend_code <%= @user.has_added_friend_code?(friend_code) ? "added" : "not_added" %>">
+                  <%= link_to_if !@user.has_added_friend_code?(friend_code), friend_code.friend_code, :action => :list_not_added %>
+                  <%#=h friend_code.friend_code %>
+                </td>
+              </tr>
+            <% end %>
+          </table>
+        <% end %>
+        
+      </div>
+      <div style="clear:both;">&nbsp;</div>
+    </div>
+  </fb:user>
+<% end %>

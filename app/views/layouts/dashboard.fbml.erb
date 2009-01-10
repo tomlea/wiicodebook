@@ -1,0 +1,18 @@
+<fb:dashboard>
+  <fb:action href="<%= url_for(:controller => :friend_codes ) %>">Show My Codes</fb:action>
+  <fb:action href="<%= url_for(:controller => :friend_codes, :action => :list_not_added) %>">Un-Entered Friend Codes</fb:action>
+  <fb:action href="<%= url_for(:controller => :friend_codes, :action => :edit) %>">Update My Codes</fb:action>
+  <fb:action href="<%= url_for(:controller => :friend_codes, :action => :invite_friends) %>">Invite a Friend</fb:action>
+</fb:dashboard>
+
+<div style="margin: 0 2em 2em 2em;">
+  <% if flash[:notice] %>
+    <fb:success message="<%= h flash[:notice] %>" />
+  <% end %>
+
+  <% if flash[:error] %>
+    <fb:error message="<%= h flash[:error] %>" />
+  <% end %>
+
+  <%= yield %>
+</div>

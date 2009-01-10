@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  user: 
+  game: 
+  friend_code: MyString
+
+two:
+  user: 
+  game: 
+  friend_code: MyString
