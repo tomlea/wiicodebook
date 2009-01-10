@@ -1,5 +1,5 @@
 # This file is auto-generated from the current state of the database. Instead of editing this file, 
-# please use the migrations feature of ActiveRecord to incrementally modify your database, and
+# please use the migrations feature of Active Record to incrementally modify your database, and
 # then regenerate this schema definition.
 #
 # Note that this schema.rb definition is the authoritative source for your database schema. If you need
@@ -16,8 +16,8 @@ ActiveRecord::Schema.define(:version => 5) do
     t.integer "friend_code_id"
   end
 
-  add_index "friend_code_addeds", ["user_id"], :name => "index_friend_code_addeds_on_user_id"
   add_index "friend_code_addeds", ["friend_code_id"], :name => "index_friend_code_addeds_on_friend_code_id"
+  add_index "friend_code_addeds", ["user_id"], :name => "index_friend_code_addeds_on_user_id"
 
   create_table "friend_codes", :force => true do |t|
     t.integer "user_id"
@@ -40,8 +40,8 @@ ActiveRecord::Schema.define(:version => 5) do
     t.datetime "updated_at"
   end
 
-  add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
   add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
+  add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
 
   create_table "users", :force => true do |t|
     t.string "friend_code"
