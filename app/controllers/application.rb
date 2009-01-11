@@ -9,11 +9,17 @@ class ApplicationController < ActionController::Base
     def is_development?
       !is_live?
     end
+    
+    def is_test?
+      Rails.env === "test"
+    end
   end
 
   layout false
-
-  ensure_application_is_installed_by_facebook_user if respond_to? :ensure_application_is_installed_by_facebook_user
+  
+  unless is_test? or not respond_to? :ensure_application_is_installed_by_facebook_user
+    ensure_application_is_installed_by_facebook_user
+  end
 
   if is_live?
     def find_or_create_user
