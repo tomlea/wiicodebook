@@ -3,7 +3,6 @@ class FriendCodesController < ApplicationController
 
   protected
   def game_codes_by_game_id(games, friend_codes)
-#    empty = games.inject({}){|acc, g| acc.merge(g.id => nil)}
     friend_codes.inject({}){|acc, fc| acc.merge(fc.game_id => fc)}
   end
 
@@ -11,12 +10,9 @@ class FriendCodesController < ApplicationController
     if self.class.is_development?
       session[:friends] || []
     else
-      facebook_session.user.friends.inject([]){|c, u| c << u.to_i}
+      facebook_session.user.friends.map{|u| u.to_i}
     end
   end
-
-
-
 
   public
   def edit

@@ -15,6 +15,8 @@ class ApplicationController < ActionController::Base
 
   layout false
 
+  ensure_application_is_installed_by_facebook_user
+
   if is_live?
     def find_or_create_user
       if params[:format] == :fbml
@@ -26,7 +28,6 @@ class ApplicationController < ActionController::Base
       end
     end
   else
-    ensure_application_is_installed_by_facebook_user
     def find_or_create_user
       @user = User.find_or_create_by_id(facebook_session.user.to_i)
     end
