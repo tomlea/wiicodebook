@@ -34,7 +34,7 @@ class FriendCodesController < ApplicationController
 
   def mark_as_entered
     friend_code = FriendCode.find(params[:friend_code_id])
-    @user.friend_code_addeds.find_or_create_by_friend_code_id(friend_code.id)
+    @user.add_friend_code(friend_code)
     flash[:notice] = "Friend code marked as added"
     redirect_to :action => :list_not_added
   end
