@@ -1,9 +1,17 @@
 class ApplicationController < ActionController::Base
   helper :all
 
-  def self.is_live?
-    RAILS_ENV === "production"
+  class << self
+    def is_live?
+      RAILS_ENV === "production"
+    end
+    
+    def is_development?
+      !is_live?
+    end
   end
+
+  
 
   layout false
 
