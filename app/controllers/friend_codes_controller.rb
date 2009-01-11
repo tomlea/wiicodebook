@@ -25,7 +25,6 @@ class FriendCodesController < ApplicationController
     @friends.reject! do |friend|
       friend.friend_code.nil? and friend.friend_codes.empty?
     end
-    @game_codes = @user.friend_codes(:include => :games )
   end
 
   def list_not_added
